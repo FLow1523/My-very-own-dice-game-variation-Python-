@@ -1,0 +1,60 @@
+import random
+
+#this is a funtion for the actual dice rolling
+def rollDice(roll_times, player_name):
+    totalScore = 0
+    for i in range(roll_times):
+            die1 = random.randint(1, 6)
+            die2 = random.randint(1, 6)
+            rollTotal = die1 + die2 
+            totalScore = totalScore + rollTotal
+            print(f"{player_name} rolled: ({die1}, {die2}) - The total roll is : {rollTotal}")
+    return totalScore
+
+
+# this is where the main code starts 
+while True:
+    print("s=single player, m=multi player, n=Not interested")
+        
+    choice = input("Roll the Dice? (s/m/n): ")
+        
+    if choice.lower() == 's':
+           roll_times = int(input("How many times would you like to roll the dice? : "))
+           player_name = input("Enter your name: ")
+           score = rollDice(roll_times, player_name)
+           print(f"\n{player_name}, your total score is: {score}")
+
+    elif choice.lower() == 'm':
+            roll_times = int(input("How many rounds would you like to play? : "))
+            
+            #player 1
+            player_name = input("Player 1 name: ")
+            print(f"\n*** Player 1 {player_name} ***")
+            player1Score =rollDice(roll_times, player_name)
+ 
+            #player 2
+            player_name = input("Player 2 name: ")
+            print(f"\n*** Player 2 {player_name} ***")
+            player2Score = rollDice(roll_times, player_name)
+            
+            print("\n ^^^ FINAL SCORE ^^^")
+            print(f"Player 1: {player1Score}")
+            print(f"Player 2: {player2Score}")
+            
+            if player1Score> player2Score:
+                print(f"\n🏆 Player 1 WINS!")
+            elif player2Score > player1Score:
+                print(f"\n🏆 Player 2 WINS!")
+            else:
+                print("\n🤝 It's a TIE!")
+            break
+        
+    elif choice.lower() == 'n':
+        print(f"Thank you for playing!")
+        break
+        
+    else:
+           print("Invalid choice, please enter 's', 'm', or 'n'.")
+           
+           
+           
